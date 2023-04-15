@@ -5,5 +5,8 @@
     font-serif
   >
     Hello Index
+    <NButton type="primary">
+      提交
+    </NButton>
   </div>
 </template>
