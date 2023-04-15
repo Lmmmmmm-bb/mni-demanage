@@ -1,29 +1,6 @@
 import type { GlobalThemeOverrides } from 'naive-ui';
 
-export const theme: GlobalThemeOverrides = {
-  common: {
-    primaryColor: '#165DFFFF',
-    primaryColorHover: '#4080FFFF',
-    primaryColorPressed: '#0E42D2FF',
-    primaryColorSuppl: '#4080FFFF',
-    successColor: '#00B42AFF',
-    successColorHover: '#23C343FF',
-    successColorSuppl: '#23C343FF',
-    successColorPressed: '#009A29FF',
-    warningColor: '#FF7D00FF',
-    warningColorHover: '#FF9A2EFF',
-    warningColorSuppl: '#FF9A2EFF',
-    warningColorPressed: '#D25F00FF',
-    errorColor: '#F53F3FFF',
-    errorColorHover: '#F76560FF',
-    errorColorSuppl: '#F76560FF',
-    errorColorPressed: '#CB2634FF',
-    textColor1: '#1D2129FF',
-    textColor2: '#4E5969FF',
-    textColor3: '#86909CFF',
-    iconColor: 'rgba(194, 194, 194, 1)',
-    textColorDisabled: '#C9CDD4FF',
-  },
+const baseTheme: GlobalThemeOverrides = {
   Button: {
     borderRadiusTiny: '5px',
     borderRadiusSmall: '5px',
@@ -207,5 +184,62 @@ export const theme: GlobalThemeOverrides = {
   },
   Badge: {
     color: '#F53F3FFF',
+  },
+};
+
+export const lightTheme: GlobalThemeOverrides = {
+  ...baseTheme,
+  common: {
+    primaryColor: '#165DFFFF',
+    primaryColorHover: '#4080FFFF',
+    primaryColorPressed: '#0E42D2FF',
+    primaryColorSuppl: '#4080FFFF',
+    successColor: '#00B42AFF',
+    successColorHover: '#23C343FF',
+    successColorSuppl: '#23C343FF',
+    successColorPressed: '#009A29FF',
+    warningColor: '#FF7D00FF',
+    warningColorHover: '#FF9A2EFF',
+    warningColorSuppl: '#FF9A2EFF',
+    warningColorPressed: '#D25F00FF',
+    errorColor: '#F53F3FFF',
+    errorColorHover: '#F76560FF',
+    errorColorSuppl: '#F76560FF',
+    errorColorPressed: '#CB2634FF',
+    textColor1: '#1D2129FF',
+    textColor2: '#4E5969FF',
+    textColor3: '#86909CFF',
+    iconColor: 'rgba(194, 194, 194, 1)',
+    textColorDisabled: '#C9CDD4FF',
+    textColorBase: '#00000000',
+  },
+
+};
+
+export const darkTheme: GlobalThemeOverrides = {
+  ...baseTheme,
+  common: {
+    primaryColor: '#3C7EFFFF',
+    primaryColorHover: '#306FFFFF',
+    primaryColorPressed: '#689FFFFF',
+    primaryColorSuppl: '#306FFFFF',
+    successColor: '#27C346FF',
+    successColorHover: '#1DB440FF',
+    successColorSuppl: '#1DB440FF',
+    successColorPressed: '#50D266FF',
+    warningColor: '#FF9626FF',
+    warningColorHover: '#FF8D1FFF',
+    warningColorSuppl: '#FF8D1FFF',
+    warningColorPressed: '#FFB357FF',
+    errorColor: '#F76965FF',
+    errorColorHover: '#F54E4EFF',
+    errorColorSuppl: '#F54E4EFF',
+    errorColorPressed: '#F98D86FF',
+    textColor1: '#f6f6f6FF',
+    textColor2: '#c5c5c5FF',
+    textColor3: '#929293FF',
+    iconColor: 'rgba(194, 194, 194, 1)',
+    textColorDisabled: '#5f5f60FF',
+    textColorBase: '#FFFFFFFF',
   },
 };
