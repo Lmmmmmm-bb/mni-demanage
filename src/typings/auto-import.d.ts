@@ -55,6 +55,7 @@ declare global {
   const shallowRef: typeof import('vue')['shallowRef']
   const suite: typeof import('vitest')['suite']
   const test: typeof import('vitest')['test']
+  const theme: typeof import('../configs/theme')['theme']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
@@ -63,7 +64,11 @@ declare global {
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useDialog: typeof import('naive-ui')['useDialog']
   const useLink: typeof import('vue-router')['useLink']
+  const useLoadingBar: typeof import('naive-ui')['useLoadingBar']
+  const useMessage: typeof import('naive-ui')['useMessage']
+  const useNotification: typeof import('naive-ui')['useNotification']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useSlots: typeof import('vue')['useSlots']
@@ -134,6 +139,7 @@ declare module 'vue' {
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
     readonly suite: UnwrapRef<typeof import('vitest')['suite']>
     readonly test: UnwrapRef<typeof import('vitest')['test']>
+    readonly theme: UnwrapRef<typeof import('../configs/theme')['theme']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
@@ -142,7 +148,11 @@ declare module 'vue' {
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useDialog: UnwrapRef<typeof import('naive-ui')['useDialog']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
+    readonly useLoadingBar: UnwrapRef<typeof import('naive-ui')['useLoadingBar']>
+    readonly useMessage: UnwrapRef<typeof import('naive-ui')['useMessage']>
+    readonly useNotification: UnwrapRef<typeof import('naive-ui')['useNotification']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
