@@ -21,6 +21,7 @@ export default defineConfig({
         'vue',
         'vue-router',
         'vitest',
+        'pinia',
         {
           'naive-ui': [
             'useDialog',
@@ -30,7 +31,10 @@ export default defineConfig({
           ],
         },
       ],
-      dirs: ['./src/configs/**'],
+      dirs: [
+        './src/configs/**',
+        './src/stores/**',
+      ],
       dts: './src/typings/auto-import.d.ts',
       vueTemplate: true,
     }),
