@@ -1,8 +1,7 @@
 import { createApp } from 'vue';
 
 import App from './app';
-import { router } from './router';
-import { pinia } from './modules';
+import { pinia, router } from './modules';
 
 import './index.css';
 import 'virtual:uno.css';
