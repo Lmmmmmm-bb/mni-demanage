@@ -1,6 +1,12 @@
 html,
-body {
+body,
+#app {
   height: 100%;
   overflow: auto;
-  color: #333;
+  transition: color, background-color 0.3s ease-in-out;
+}
+
+html.dark {
+  color: #fff;
+  background-color: #222;
 }

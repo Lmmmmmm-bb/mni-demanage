@@ -22,6 +22,8 @@ export default defineConfig({
         'vue-router',
         'vitest',
         'pinia',
+        '@vueuse/core',
+        '@vueuse/head',
         {
           'naive-ui': [
             'useDialog',
