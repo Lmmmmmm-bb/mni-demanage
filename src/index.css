@@ -1,12 +1,41 @@
+:root {
+  --dm-bg: #fff;
+  --dm-scroll: #ccc;
+  --dm-scroll-hover: #bbb;
+  scrollbar-color: var(--dm-scrollbar) var(--dm-bg);
+}
+
 html,
 body,
 #app {
+  width: 100%;
   height: 100%;
   overflow: auto;
   transition: color, background-color 0.3s ease-in-out;
 }
 
 html.dark {
+  --dm-bg: #212121;
+  --dm-scroll: #444;
+  --dm-scroll-hover: #555;
   color: #fff;
   background-color: #222;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dm-scroll);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--dm-scroll-hover);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--dm-bg);
 }
