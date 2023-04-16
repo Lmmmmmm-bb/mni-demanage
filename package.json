@@ -13,6 +13,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@tanstack/vue-query": "^4.29.1",
     "@unocss/reset": "^0.51.4",
     "@vueuse/core": "^10.0.2",
     "@vueuse/head": "^1.1.23",
