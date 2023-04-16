@@ -4,7 +4,9 @@ import vue from '@vitejs/plugin-vue';
 import pages from 'vite-plugin-pages';
 import { defineConfig } from 'vitest/config';
 import layouts from 'vite-plugin-vue-layouts';
+import compression from 'vite-plugin-compression';
 import autoImport from 'unplugin-auto-import/vite';
+import { visualizer } from 'rollup-plugin-visualizer';
 import vueComponents from 'unplugin-vue-components/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 
@@ -16,6 +18,12 @@ export default defineConfig({
     pages(),
     layouts(),
     unocss(),
+    compression(),
+    visualizer({
+      open: true,
+      gzipSize: true,
+      filename: './dist/visualizer.html',
+    }),
     autoImport({
       imports: [
         'vue',
@@ -48,6 +56,17 @@ export default defineConfig({
   resolve: {
     alias: {
       '~': resolve(__dirname, 'src'),
+    },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          naiveUi: ['naive-ui'],
+          router: ['vue-router'],
+          vueuse: ['@vueuse/core', '@vueuse/head'],
+        },
+      },
     },
   },
 });

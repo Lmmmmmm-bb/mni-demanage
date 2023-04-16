@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 
 import App from './app';
-import { pinia, router } from './modules';
+import { head, pinia, router } from './modules';
 
 import './index.css';
 import 'virtual:uno.css';
@@ -15,5 +15,6 @@ document.head.appendChild(meta);
 const app = createApp(App);
 
 app.use(router);
+app.use(head);
 app.use(pinia);
 app.mount('#app');
