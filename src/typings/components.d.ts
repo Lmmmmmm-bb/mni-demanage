@@ -14,5 +14,6 @@ declare module '@vue/runtime-core' {
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ThemeSwitch: typeof import('./../components/ThemeSwitch/index.vue')['default']
   }
 }
