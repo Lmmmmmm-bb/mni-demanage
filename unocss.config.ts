@@ -20,4 +20,7 @@ export default defineConfig({
       },
     }),
   ],
+  shortcuts: {
+    'transition-base': 'transition-all transition-duration-500 ease-in-out',
+  },
 });
