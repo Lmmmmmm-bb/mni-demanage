@@ -4,7 +4,7 @@ const toggleColorMode = useToggle(isDark);
 </script>
 
 <template>
-  <NButton quaternary size="small" @click="toggleColorMode()">
+  <NButton secondary size="small" @click="toggleColorMode()">
     <template #icon>
       <div i-carbon:moon dark:i-carbon:sun />
     </template>
