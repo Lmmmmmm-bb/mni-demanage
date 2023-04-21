@@ -5,12 +5,14 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const TOKEN_KEY: typeof import('../configs/storage-keys')['TOKEN_KEY']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const afterAll: typeof import('vitest')['afterAll']
   const afterEach: typeof import('vitest')['afterEach']
   const assert: typeof import('vitest')['assert']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
+  const axiosInstance: typeof import('../utils/axios')['axiosInstance']
   const beforeAll: typeof import('vitest')['beforeAll']
   const beforeEach: typeof import('vitest')['beforeEach']
   const chai: typeof import('vitest')['chai']
@@ -22,6 +24,8 @@ declare global {
   const controlledComputed: typeof import('@vueuse/core')['controlledComputed']
   const controlledRef: typeof import('@vueuse/core')['controlledRef']
   const createApp: typeof import('vue')['createApp']
+  const createDiscrete: typeof import('../utils/discrete')['createDiscrete']
+  const createDiscreteApi: typeof import('naive-ui')['createDiscreteApi']
   const createEventHook: typeof import('@vueuse/core')['createEventHook']
   const createGlobalState: typeof import('@vueuse/core')['createGlobalState']
   const createInjectionState: typeof import('@vueuse/core')['createInjectionState']
@@ -322,12 +326,14 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly TOKEN_KEY: UnwrapRef<typeof import('../configs/storage-keys')['TOKEN_KEY']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly afterAll: UnwrapRef<typeof import('vitest')['afterAll']>
     readonly afterEach: UnwrapRef<typeof import('vitest')['afterEach']>
     readonly assert: UnwrapRef<typeof import('vitest')['assert']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
+    readonly axiosInstance: UnwrapRef<typeof import('../utils/axios')['axiosInstance']>
     readonly beforeAll: UnwrapRef<typeof import('vitest')['beforeAll']>
     readonly beforeEach: UnwrapRef<typeof import('vitest')['beforeEach']>
     readonly chai: UnwrapRef<typeof import('vitest')['chai']>
@@ -339,6 +345,8 @@ declare module 'vue' {
     readonly controlledComputed: UnwrapRef<typeof import('@vueuse/core')['controlledComputed']>
     readonly controlledRef: UnwrapRef<typeof import('@vueuse/core')['controlledRef']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
+    readonly createDiscrete: UnwrapRef<typeof import('../utils/discrete')['createDiscrete']>
+    readonly createDiscreteApi: UnwrapRef<typeof import('naive-ui')['createDiscreteApi']>
     readonly createEventHook: UnwrapRef<typeof import('@vueuse/core')['createEventHook']>
     readonly createGlobalState: UnwrapRef<typeof import('@vueuse/core')['createGlobalState']>
     readonly createInjectionState: UnwrapRef<typeof import('@vueuse/core')['createInjectionState']>
