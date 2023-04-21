@@ -15,7 +15,7 @@ export default defineConfig({
   test: { environment: 'jsdom' },
   plugins: [
     vue(),
-    pages(),
+    pages({ exclude: ['**/*.component.vue'] }),
     layouts(),
     unocss(),
     compression(),
