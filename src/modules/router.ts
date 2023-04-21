@@ -12,6 +12,9 @@ export const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  useHead({ title: 'Hi' });
+  useHead({
+    title: to.meta.title || 'demanage',
+  });
+
   next();
 });

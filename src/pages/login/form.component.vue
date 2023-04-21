@@ -32,7 +32,7 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <div
+  <main
     relative
     grid place-content-center
     transition-base overflow-hidden
@@ -76,5 +76,5 @@ const handleLogin = async () => {
       </NButton>
       <ThemeSwitch type="info" size="medium" secondary />
     </NButtonGroup>
-  </div>
+  </main>
 </template>

@@ -17,3 +17,10 @@ onMounted(() => {
     <Logo :is-open="isOpen" />
   </div>
 </template>
+
+<route lang="yaml">
+name: login
+meta:
+  title: 登录 - demanage
+  layout: empty
+</route>
