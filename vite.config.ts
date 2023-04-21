@@ -41,6 +41,12 @@ export default defineConfig({
             'createDiscreteApi',
           ],
         },
+        {
+          '@tanstack/vue-query': [
+            'useQuery',
+            'useMutation',
+          ],
+        },
       ],
       dirs: [
         './src/configs/**',
