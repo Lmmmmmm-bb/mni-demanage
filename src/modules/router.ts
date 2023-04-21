@@ -10,3 +10,11 @@ export const router = createRouter({
   history,
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  useHead({
+    title: to.meta.title || 'demanage',
+  });
+
+  next();
+});

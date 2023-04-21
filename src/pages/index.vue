@@ -7,3 +7,9 @@
     <ThemeSwitch />
   </div>
 </template>
+
+<route lang="yaml">
+redirect: login
+meta:
+  layout: empty
+</route>

@@ -1,6 +1,14 @@
 <script setup lang="ts">
 const isDark = useDark({ valueLight: 'light' });
 const toggleColorMode = useToggle(isDark);
+
+watchEffect(() => {
+  useHead({
+    meta: [
+      { name: 'theme-color', content: isDark.value ? '#222' : '#fff' },
+    ],
+  });
+});
 </script>
 
 <template>

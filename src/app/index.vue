@@ -6,6 +6,8 @@ const theme = computed(() => isDark.value ? darkTheme : lightTheme);
 
 <template>
   <NConfigProvider h-full :theme-overrides="theme">
-    <RouterView />
+    <NNotificationProvider :max="3">
+      <RouterView />
+    </NNotificationProvider>
   </NConfigProvider>
 </template>

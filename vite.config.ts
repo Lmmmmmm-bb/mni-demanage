@@ -15,7 +15,7 @@ export default defineConfig({
   test: { environment: 'jsdom' },
   plugins: [
     vue(),
-    pages(),
+    pages({ exclude: ['**/*.component.vue'] }),
     layouts(),
     unocss(),
     compression(),
@@ -38,12 +38,21 @@ export default defineConfig({
             'useMessage',
             'useNotification',
             'useLoadingBar',
+            'createDiscreteApi',
+          ],
+        },
+        {
+          '@tanstack/vue-query': [
+            'useQuery',
+            'useMutation',
           ],
         },
       ],
       dirs: [
         './src/configs/**',
         './src/stores/**',
+        './src/utils/**',
+        './src/services/**',
       ],
       dts: './src/typings/auto-import.d.ts',
       vueTemplate: true,
@@ -62,8 +71,8 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          naiveUi: ['naive-ui'],
-          router: ['vue-router'],
+          ui: ['naive-ui'],
+          vue: ['vue', 'vue-router'],
           vueuse: ['@vueuse/core', '@vueuse/head'],
         },
       },

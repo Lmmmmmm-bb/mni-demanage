@@ -1,4 +1,4 @@
-import { type FormRules } from 'naive-ui';
+import type { FormRules } from 'naive-ui';
 
 export const loginFormRules: FormRules = {
   phone: {
