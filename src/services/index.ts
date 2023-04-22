@@ -2,7 +2,13 @@ import { ErrorCode } from './codes';
 
 export type { BaseResponse, BaseErrorResponse, BaseSuccessResponse } from './types';
 
-export { LOGIN_BY_MOBILE_KEY, type LoginByMobileParams, loginByMobile } from './login';
+export {
+  LOGIN_BY_MOBILE_KEY,
+  type LoginByMobileParams,
+  loginByMobile,
+  GET_RSA_PUBLIC_KEY_KEY,
+  getRSAPublicKey,
+} from './login';
 
 const notificationConfig = {
   keepAliveOnHover: true,

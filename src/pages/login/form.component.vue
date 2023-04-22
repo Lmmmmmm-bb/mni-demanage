@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { type FormInst } from 'naive-ui';
 
-import { LOGIN_BY_MOBILE_KEY, loginByMobile } from '~/services';
+import {
+  GET_RSA_PUBLIC_KEY_KEY,
+  LOGIN_BY_MOBILE_KEY,
+  getRSAPublicKey,
+  loginByMobile,
+} from '~/services';
 
 import { loginFormRules, phoneInputValidateRegex } from './config';
-import { isDeleteSpace, removeSpaces, splicePhoneNumber } from './utils';
+import { encryptByRSA, isDeleteSpace, removeSpaces, splicePhoneNumber } from './utils';
 
 const props = defineProps<{ isOpen: boolean }>();
 const router = useRouter();
@@ -15,9 +20,19 @@ const info = reactive({
   password: '',
 });
 
+const { data: pubKey } = useQuery({
+  enabled: true,
+  queryKey: [GET_RSA_PUBLIC_KEY_KEY],
+  queryFn: getRSAPublicKey,
+  select: data => data.data,
+});
+
 const { isFetching, refetch } = useQuery({
-  queryKey: [LOGIN_BY_MOBILE_KEY, info],
-  queryFn: () => loginByMobile({ mobile: info.phone, password: info.password }),
+  queryKey: [LOGIN_BY_MOBILE_KEY, info, pubKey],
+  queryFn: () => {
+    const encryptPassword = encryptByRSA(pubKey.value!, info.password);
+    return loginByMobile({ mobile: info.phone, password: encryptPassword });
+  },
   select: data => data.data,
   onSuccess: (token) => {
     localStorage.setItem(TOKEN_KEY, token);
@@ -41,7 +56,7 @@ const handlePhoneInput = (val: string) => {
 
 const handleLogin = async () => {
   await formRef.value?.validate();
-  refetch();
+  pubKey.value && refetch();
 };
 </script>
 
