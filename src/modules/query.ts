@@ -4,6 +4,8 @@ export const vueQueryOptions: VueQueryPluginOptions = {
   queryClientConfig: {
     defaultOptions: {
       queries: {
+        retry: false,
+        enabled: false,
         refetchOnWindowFocus: false,
       },
     },

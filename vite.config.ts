@@ -52,7 +52,6 @@ export default defineConfig({
         './src/configs/**',
         './src/stores/**',
         './src/utils/**',
-        './src/services/**',
       ],
       dts: './src/typings/auto-import.d.ts',
       vueTemplate: true,

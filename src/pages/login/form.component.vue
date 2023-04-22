@@ -1,15 +1,28 @@
 <script setup lang="ts">
 import { type FormInst } from 'naive-ui';
 
+import { LOGIN_BY_MOBILE_KEY, loginByMobile } from '~/services';
+
 import { loginFormRules, phoneInputValidateRegex } from './config';
 import { isDeleteSpace, removeSpaces, splicePhoneNumber } from './utils';
 
 const props = defineProps<{ isOpen: boolean }>();
+const router = useRouter();
 
 const formRef = ref<FormInst>();
 const info = reactive({
   phone: '',
   password: '',
+});
+
+const { isFetching, refetch } = useQuery({
+  queryKey: [LOGIN_BY_MOBILE_KEY, info],
+  queryFn: () => loginByMobile({ mobile: info.phone, password: info.password }),
+  select: data => data.data,
+  onSuccess: (token) => {
+    localStorage.setItem(TOKEN_KEY, token);
+    router.push({ name: 'overview' });
+  },
 });
 
 const formatPhone = computed(() => splicePhoneNumber(info.phone));
@@ -27,7 +40,8 @@ const handlePhoneInput = (val: string) => {
 };
 
 const handleLogin = async () => {
-  formRef.value?.validate();
+  await formRef.value?.validate();
+  refetch();
 };
 </script>
 
@@ -71,7 +85,7 @@ const handleLogin = async () => {
       </NFormItem>
     </NForm>
     <NButtonGroup mt-6>
-      <NButton type="primary" flex-1 @click="handleLogin">
+      <NButton type="primary" flex-1 :loading="isFetching" @click="handleLogin">
         登录
       </NButton>
       <ThemeSwitch type="info" size="medium" secondary />
