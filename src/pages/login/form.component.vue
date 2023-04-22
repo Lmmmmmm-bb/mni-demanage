@@ -1,15 +1,43 @@
 <script setup lang="ts">
 import { type FormInst } from 'naive-ui';
 
+import {
+  GET_RSA_PUBLIC_KEY_KEY,
+  LOGIN_BY_MOBILE_KEY,
+  getRSAPublicKey,
+  loginByMobile,
+} from '~/services';
+
 import { loginFormRules, phoneInputValidateRegex } from './config';
-import { isDeleteSpace, removeSpaces, splicePhoneNumber } from './utils';
+import { encryptByRSA, isDeleteSpace, removeSpaces, splicePhoneNumber } from './utils';
 
 const props = defineProps<{ isOpen: boolean }>();
+const router = useRouter();
 
 const formRef = ref<FormInst>();
 const info = reactive({
   phone: '',
   password: '',
+});
+
+const { data: pubKey } = useQuery({
+  enabled: true,
+  queryKey: [GET_RSA_PUBLIC_KEY_KEY],
+  queryFn: getRSAPublicKey,
+  select: data => data.data,
+});
+
+const { isFetching, refetch } = useQuery({
+  queryKey: [LOGIN_BY_MOBILE_KEY, info, pubKey],
+  queryFn: () => {
+    const encryptPassword = encryptByRSA(pubKey.value!, info.password);
+    return loginByMobile({ mobile: info.phone, password: encryptPassword });
+  },
+  select: data => data.data,
+  onSuccess: (token) => {
+    localStorage.setItem(TOKEN_KEY, token);
+    router.push({ name: 'overview' });
+  },
 });
 
 const formatPhone = computed(() => splicePhoneNumber(info.phone));
@@ -27,7 +55,8 @@ const handlePhoneInput = (val: string) => {
 };
 
 const handleLogin = async () => {
-  formRef.value?.validate();
+  await formRef.value?.validate();
+  pubKey.value && refetch();
 };
 </script>
 
@@ -71,7 +100,7 @@ const handleLogin = async () => {
       </NFormItem>
     </NForm>
     <NButtonGroup mt-6>
-      <NButton type="primary" flex-1 @click="handleLogin">
+      <NButton type="primary" flex-1 :loading="isFetching" @click="handleLogin">
         登录
       </NButton>
       <ThemeSwitch type="info" size="medium" secondary />

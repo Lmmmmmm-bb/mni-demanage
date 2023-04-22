@@ -1,3 +1,5 @@
+import RASEncrypt from 'jsencrypt';
+
 export const removeSpaces = (str: string) => str.replace(/\s/g, '');
 
 export const splicePhoneNumber = (str: string) => {
@@ -28,4 +30,12 @@ export const isDeleteSpace = (current: string, prev: string) => {
   const isLsrSpace = currentLen === 3 && prevLen === 3;
 
   return isHlrSpace || isLsrSpace;
+};
+
+export const encryptByRSA = (pubKey: string, content: string) => {
+  const encrypt = new RASEncrypt();
+  encrypt.setPublicKey(pubKey);
+  const rsaPassWord = encrypt.encrypt(content);
+
+  return rsaPassWord || '';
 };
