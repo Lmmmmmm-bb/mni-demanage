@@ -11,7 +11,6 @@ import {
 } from '~/services';
 
 const props = defineProps<{ isOpen: boolean }>();
-const router = useRouter();
 
 const formRef = ref<FormInst>();
 const info = reactive({
@@ -33,10 +32,10 @@ const { isFetching, refetch } = useQuery({
     return loginByMobile({ mobile: info.phone, password: encryptPassword });
   },
   select: data => data.data,
-  onSuccess: (token) => {
-    localStorage.setItem(TOKEN_KEY, token);
-    router.push({ name: 'overview' });
-  },
+  // onSuccess: (token) => {
+  //   localStorage.setItem(TOKEN_KEY, token);
+  //   router.push({ name: 'overview' });
+  // },
 });
 
 const formatPhone = computed(() => splicePhoneNumber(info.phone));
