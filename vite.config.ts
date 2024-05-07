@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import unocss from 'unocss/vite';
 import vue from '@vitejs/plugin-vue';
 import pages from 'vite-plugin-pages';
