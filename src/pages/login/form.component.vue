@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { type FormInst } from 'naive-ui';
+import type { FormInst } from 'naive-ui';
 
+import { loginFormRules, phoneInputValidateRegex } from './config';
+import { encryptByRSA, isDeleteSpace, removeSpaces, splicePhoneNumber } from './utils';
 import {
   GET_RSA_PUBLIC_KEY_KEY,
   LOGIN_BY_MOBILE_KEY,
@@ -8,11 +10,7 @@ import {
   loginByMobile,
 } from '~/services';
 
-import { loginFormRules, phoneInputValidateRegex } from './config';
-import { encryptByRSA, isDeleteSpace, removeSpaces, splicePhoneNumber } from './utils';
-
 const props = defineProps<{ isOpen: boolean }>();
-const router = useRouter();
 
 const formRef = ref<FormInst>();
 const info = reactive({
@@ -34,10 +32,10 @@ const { isFetching, refetch } = useQuery({
     return loginByMobile({ mobile: info.phone, password: encryptPassword });
   },
   select: data => data.data,
-  onSuccess: (token) => {
-    localStorage.setItem(TOKEN_KEY, token);
-    router.push({ name: 'overview' });
-  },
+  // onSuccess: (token) => {
+  //   localStorage.setItem(TOKEN_KEY, token);
+  //   router.push({ name: 'overview' });
+  // },
 });
 
 const formatPhone = computed(() => splicePhoneNumber(info.phone));
