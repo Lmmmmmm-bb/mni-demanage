@@ -11,4 +11,4 @@ export const loginFormRules: FormRules = {
   },
 };
 
-export const phoneInputValidateRegex = /^[0-9]{0,13}$/;
+export const phoneInputValidateRegex = /^\d{0,13}$/;
