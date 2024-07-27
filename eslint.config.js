@@ -5,6 +5,7 @@ export default antfu({}, {
     'antfu/top-level-function': 'off',
 
     'curly': ['error', 'all'],
+    'ts/no-unused-expressions': 'off',
 
     'style/semi': ['error', 'always'],
     'style/member-delimiter-style': ['error', {}],
