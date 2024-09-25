@@ -1,14 +1,14 @@
 import { resolve } from 'node:path';
-import unocss from 'unocss/vite';
 import vue from '@vitejs/plugin-vue';
-import pages from 'vite-plugin-pages';
-import { defineConfig } from 'vitest/config';
-import layouts from 'vite-plugin-vue-layouts';
-import compression from 'vite-plugin-compression';
-import autoImport from 'unplugin-auto-import/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
-import vueComponents from 'unplugin-vue-components/vite';
+import unocss from 'unocss/vite';
+import autoImport from 'unplugin-auto-import/vite';
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import vueComponents from 'unplugin-vue-components/vite';
+import compression from 'vite-plugin-compression';
+import pages from 'vite-plugin-pages';
+import layouts from 'vite-plugin-vue-layouts';
+import { defineConfig } from 'vitest/config';
 
 // https://vitejs.dev/config/
 export default defineConfig({

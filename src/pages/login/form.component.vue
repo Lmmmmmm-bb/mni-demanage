@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { FormInst } from 'naive-ui';
 
-import { loginFormRules, phoneInputValidateRegex } from './config';
-import { encryptByRSA, isDeleteSpace, removeSpaces, splicePhoneNumber } from './utils';
 import {
   GET_RSA_PUBLIC_KEY_KEY,
-  LOGIN_BY_MOBILE_KEY,
   getRSAPublicKey,
+  LOGIN_BY_MOBILE_KEY,
   loginByMobile,
 } from '~/services';
+import { loginFormRules, phoneInputValidateRegex } from './config';
+import { encryptByRSA, isDeleteSpace, removeSpaces, splicePhoneNumber } from './utils';
 
 const props = defineProps<{ isOpen: boolean }>();
 

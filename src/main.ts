@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 
+import App from './app';
 import {
   head,
   pinia,
@@ -7,7 +8,6 @@ import {
   vueQuery,
   vueQueryOptions,
 } from './modules';
-import App from './app';
 
 import './index.css';
 import 'virtual:uno.css';
